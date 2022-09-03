@@ -1,4 +1,4 @@
-// COLOCA AQUÍ TU NOMBRE COMPLETO
-// COLOCA AQUÍ TU ID
-// COLOCA AQUÍ TU CORREO ELECTRÓNICO
+// Juan Esteban Aristizábal Ortiz
+// 165728
+// juan.aristizabalo@upb.edu.co
 
