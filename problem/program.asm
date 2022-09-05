@@ -2,39 +2,80 @@
 // 165728
 // juan.aristizabalo@upb.edu.co
 
-   @R0
-   D=M
-   @n
-   M=D
-
-   @i
-   M=0
-
-   @SCREEN
-   D=A
-   @adress
-   M=D
-(LOOP)
-   @i
-   D=M
-   @n
-   D=D-M
-   @END
-   D;JGT
-
-   @adress
-   A=M
-   M=-1
-
-   @i
-   M=M+1
-   @32
-   D=A
-   @adress
-   M=D+M
-   @LOOP
-   0;JMP
-
-(END)
-   @END
+(TECLADO)
+     @KBD
+     D=M
+     @84
+     D=D-A
+     @PINTAR     
+     D;JEQ
+     @KBD
+     D=M
+     @67
+     D=D-A
+     @DESPINTAR
+     D;JEQ
+     @TECLADO     
+     0;JMP  
+(PINTAR)     
+     @16400     
+     D=A     
+     @PINTURA    
+     M=D  
+     @8200  
+     D=A     
+     @Contador    
+     M=D  
+(INICIO)     
+     @Contador    
+     D=M     
+     @FIN     
+     D;JEQ     
+     @32     
+     D=A      
+(INICIARPINTURA)     
+     @Contador     
+     M=M-1     
+     @Contador1     
+     M=D     
+     M=M-1     
+     D=M     
+     @PINTURA     
+     M=M+1     
+     @INICIARPINTURA     
+     D;JGT     
+     @PINTURA     
+     A=M     
+     M =-1     
+     @INICIO     
+     0;JMP 
+(FIN)      
+     @TECLADO    
+     0;JMP  
+(DESPINTAR)     
+     @SCREEN     
+     D=A    
+     @PINTURA    
+     M=D      
+     @8192     
+     D=A     
+     @Contador     
+     M=D  
+(INICIO2)     
+     @Contador     
+     D=M     
+     @FIN2    
+     D;JEQ     
+     @PINTURA    
+     A=M     
+     M=0     
+     @PINTURA     
+     M=M+1     
+     @Contador     
+     M=M-1     
+     @INICIO2     
+     0;JMP 
+(FIN2) 
+     @TECLADO 
+     0;JMP
 
