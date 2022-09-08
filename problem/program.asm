@@ -1,141 +1,136 @@
 (START)
-        @KBD
-        D=M
-        @84
-        D=D-A
-        @PRINT
-        D;JEQ
+            @16400
+            D=A
 
-        @KBD
-        D=M
-        @67
-        D=D-A 
-        @CLEAR
-        D;JEQ
+            @pscreen
+            M=D
 
-        @START
-        0;JMP
+            @256
+            D=A
 
-(CLEAR)
-        @16384 
-	D=A
-	@coord1 
-	M=D 
-	@8192
-	D=A
-	@cont1
-	M=D
-	@1
-	D=A 
-	@sal1
-	M=D
-	@color1
-	M=0
-	@PINTAR1
-	0;JMP
+            @cont
+            M=D
 
-(PRINT)
-        @16399
-        D=A
-	@coord 
-	M=D 
-	@256
-	D=A
-	@cont
-	M=D
-	@32
-	D=A 
-	@sal
-	M=D
-        @256
-        D=A
-	@color
-	M=D
-        
-	@INICIARPINTURA
-	0;JMP
+            @32
+            D=A
+            @cont2
+            M=D
 
-(VARIABLESHORIZONTAL)
+            @4096
+            D=A
+            @comienzo
+            M=D
 
-	@20480
-	D=A
-	@coord1
-	M=D
-	@32
-	D=A
-	@cont1
-	M=D
-	@1
-	D=A
-	@sal1
-	M=D
-	@color1
-	M=-1
+            @KBD
+            D=M
+            @84
+            D=D-A
+            @VERTICAL
+            D;JEQ
 
-        @PINTAR1
-	0;JMP
+            @KBD
+            D=M
+            @67
+            D=D-A
+            @SETCL
+            D;JEQ
 
-(INICIARPINTURA)
-        @coord
-        D=M
-        @pantalla
-        M=D
+            @START
+            0;JMP
+(VERTICAL)
+            @cont
+            D=M
 
-(INICIARPINTURA2)
-        @cont
-        D=M
-        @VARIABLESHORIZONTAL
-        D;JEQ
-        
-        @color
-        D=M
-        @pantalla
-        A=M
-        M=D
+            @HORIZONTAL
+            D;JEQ
 
-        @cont
-        M=M-1
+            @256
+            D=A
 
-        @sal
-        D=M
+            @pscreen
+            A=M
+            M=D
+            @cont
+            M=M-1
+            @32
+            D=A
+            @pscreen
+            M=M+D
 
-        @pantalla
-        M=M+D
-        
-        @INICIARPINTURA2
-        0;JMP
+            @VERTICAL
+            0;JMP
 
-(PINTAR1)
-        @coord1
-        D=M
-        @pantalla
-        M=D
+(HORIZONTAL)
+            @comienzo
+            D=M
 
-(PINTAR2)
-        @cont1
-        D=M
-        @FINAL
-        D;JEQ
+            @SCREEN
+            A=A+D
+            M=-1
 
-        @color1
-        D=M
-        @pantalla
-        A=M
-        M=D
+            @comienzo
+            M=M+1
 
-        @cont1
-        M=M-1
+            @cont2
+            M=M-1
+            D=M
+            @END
+            D;JEQ
 
-        @sal1
-        D=M
+            @HORIZONTAL
+            0;JMP
 
-        @pantalla
-        M=M+D
+(SETCL)
+            @16384
+            D=A
+            @coord
+            M=D
+            @8192
+            D=A
+            @cont
+            M=D
+            @1
+            D=A
+            @salto
+            M=D
+            @color
+            M=0
+            @RECT
+            0;JMP
 
-        @PINTAR2
-        0;JMP
+(RECT)
+            @coord
+            D=M
+            @pscreen
+            M=D
+
+(PAINT)
+            @cont
+            D=M
+
+            @END
+            D;JEQ
 
 
-(FINAL)
-        @START
-        0;JMP
+
+            @color
+            D=M
+            @pscreen
+            A=M
+            M=D
+
+            @cont
+            M=M-1
+
+            @salto
+            D=M
+
+            @pscreen
+            M=M+D
+
+            @PAINT
+            0;JMP
+
+(END)
+            @START
+            0;JMP
