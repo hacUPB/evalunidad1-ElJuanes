@@ -18,7 +18,7 @@
 
             @4096
             D=A
-            @comienzo
+            @arranque
             M=D
 
             @KBD
@@ -39,14 +39,14 @@
             0;JMP
 
 (MEDIO)
-            @comienzo
+            @arranque
             D=M
 
             @SCREEN
             A=A+D
             M=-1
 
-            @comienzo
+            @arranque
             M=M+1
 
             @cont2
@@ -97,10 +97,10 @@
             M=D
             @color
             M=0
-            @RECT
+            @RSC
             0;JMP
 
-(RECT)
+(RSC)
             @coord
             D=M
             @pscreen
