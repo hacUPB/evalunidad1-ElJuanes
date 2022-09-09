@@ -25,7 +25,7 @@
             D=M
             @84
             D=D-A
-            @VERTICAL
+            @ARRIBA
             D;JEQ
 
             @KBD
@@ -37,30 +37,8 @@
 
             @START
             0;JMP
-(VERTICAL)
-            @cont
-            D=M
 
-            @HORIZONTAL
-            D;JEQ
-
-            @256
-            D=A
-
-            @pscreen
-            A=M
-            M=D
-            @cont
-            M=M-1
-            @32
-            D=A
-            @pscreen
-            M=M+D
-
-            @VERTICAL
-            0;JMP
-
-(HORIZONTAL)
+(MEDIO)
             @comienzo
             D=M
 
@@ -77,8 +55,32 @@
             @END
             D;JEQ
 
-            @HORIZONTAL
+            @MEDIO
+            0;JMP 
+
+(ARRIBA)
+            @cont
+            D=M
+
+            @MEDIO
+            D;JEQ
+
+            @256
+            D=A
+
+            @pscreen
+            A=M
+            M=D
+            @cont
+            M=M-1
+            @32
+            D=A
+            @pscreen
+            M=M+D
+
+            @ARRIBA
             0;JMP
+
 
 (SETCL)
             @16384
@@ -104,7 +106,7 @@
             @pscreen
             M=D
 
-(PAINT)
+(PINTURA)
             @cont
             D=M
 
@@ -128,7 +130,7 @@
             @pscreen
             M=M+D
 
-            @PAINT
+            @PINTURA
             0;JMP
 
 (END)
